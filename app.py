@@ -3,22 +3,23 @@ from dotenv import load_dotenv
 from src.fetcher import get_news
 from src.analyzer import get_sentiment
 from src.summarizer import summarize_text
+from src.visualizer import plot_sentiment_distribution
 import pandas as pd
 
 load_dotenv()
 
 def main():
     """
-    Función principal para orquestar la recolección, análisis y resumen de noticias.
+    Función principal para orquestar la recolección, análisis, resumen y visualización de noticias.
     """
-    QUERY = "ciberseguridad"
+    QUERY = "elecciones presidenciales"
     
     if not os.getenv("NEWS_API_KEY"):
         print("Por favor, configura tu clave de API de NewsAPI.org en un archivo .env")
         return
 
     print(f"Buscando noticias sobre: '{QUERY}'...")
-    articles = get_news(QUERY, language='es', page_size=10) # Reducido a 10 para una demo más rápida
+    articles = get_news(QUERY, language='es', page_size=50) # Aumentamos para tener más datos para el gráfico
 
     if not articles:
         print("No se encontraron artículos o hubo un error en la solicitud.")
@@ -30,7 +31,6 @@ def main():
         description = article.get('description', '')
         content = article.get('content', '')
         
-        # Priorizar contenido, luego descripción, para el análisis y resumen
         text_to_analyze = content if content and len(content) > 100 else description
         
         sentiment = get_sentiment(text_to_analyze)
@@ -44,18 +44,17 @@ def main():
             'summary': summary
         })
 
-    # Convertir a DataFrame de pandas para una mejor visualización
+    # Convertir a DataFrame de pandas
     df = pd.DataFrame(news_data)
     
-    # Imprimir los resultados de una forma más legible
+    # Imprimir los resultados en consola
     print("\n--- Análisis de Noticias ---")
     for index, row in df.iterrows():
-        print(f"Noticia #{index + 1}")
-        print(f"  Título: {row['title']}")
-        print(f"  Sentimiento: {row['sentiment']}")
-        print(f"  Resumen: {row['summary']}")
-        print("-" * 30)
+        print(f"Noticia #{index + 1}: {row['title']} ({row['sentiment']})")
 
+    # Generar y guardar la visualización
+    if not df.empty:
+        plot_sentiment_distribution(df, QUERY)
 
 if __name__ == '__main__':
     main()
