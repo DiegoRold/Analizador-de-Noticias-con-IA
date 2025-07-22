@@ -23,14 +23,22 @@ def plot_sentiment_distribution(df, query):
     plt.style.use('seaborn-v0_8-darkgrid')
     fig, ax = plt.subplots(figsize=(10, 6))
 
+    # Mapa de colores y orden para consistencia
+    color_map = {'positivo': '#4CAF50', 'neutro': '#FFC107', 'negativo': '#F44336'}
+    order = ['positivo', 'neutro', 'negativo']
+
+    # Filtrar el orden y la paleta para que solo incluyan las categorías presentes en los datos
+    order_present = [s for s in order if s in df['sentiment'].unique()]
+    palette_present = [color_map[s] for s in order_present]
+
     sns.countplot(
         x='sentiment', 
         data=df, 
         ax=ax, 
-        palette=['#4CAF50', '#FFC107', '#F44336'], 
-        order=['positivo', 'neutro', 'negativo'],
-        hue='sentiment', # Añadido para la nueva versión de seaborn
-        legend=False     # Oculta la leyenda redundante
+        palette=palette_present,
+        order=order_present,
+        hue='sentiment',
+        legend=False
     )
 
     ax.set_title(f'Distribución de Sentimiento para Noticias sobre "{query.title()}"', fontsize=16)

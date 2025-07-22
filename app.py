@@ -4,6 +4,7 @@ from src.fetcher import get_news
 from src.analyzer import get_sentiment
 from src.summarizer import summarize_text
 from src.visualizer import plot_sentiment_distribution
+from src.exporter import export_to_csv
 import pandas as pd
 
 load_dotenv()
@@ -55,6 +56,7 @@ def main():
     # Generar y guardar la visualización
     if not df.empty:
         plot_sentiment_distribution(df, QUERY)
+        export_to_csv(df, QUERY)
 
 if __name__ == '__main__':
     main()
