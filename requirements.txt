@@ -1,0 +1,14 @@
+requests
+pandas
+nltk
+textblob
+matplotlib
+seaborn
+sumy
+gensim
+wordcloud
+reportlab
+pdfkit
+jinja2
+newsapi-python
+python-dotenv
