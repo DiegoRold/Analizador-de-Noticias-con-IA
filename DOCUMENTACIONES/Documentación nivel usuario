@@ -1,0 +1,44 @@
+# Documento de Capacidades: Sistema de Análisis de Noticias con IA
+
+## 1. Objetivo del Sistema
+
+El "Sistema de Análisis de Noticias con IA" es una herramienta de software diseñada para automatizar la monitorización y comprensión de la cobertura mediática sobre cualquier tema de interés.
+
+Su propósito es transformar un gran volumen de noticias en bruto en **insights claros y accionables**, permitiéndole medir rápidamente la percepción pública y las tendencias clave sin necesidad de leer manualmente cientos de artículos.
+
+---
+
+## 2. Características Principales y Beneficios
+
+#### 🔹 Recolección Automática de Noticias
+-   **¿Qué hace?** El sistema se conecta a una base de datos global de noticias para encontrar y recuperar los artículos más relevantes sobre la palabra clave que usted elija (ej: el nombre de su empresa, un producto, un competidor o un tema de mercado).
+-   **Su beneficio:** Acceso inmediato a la información más reciente sin esfuerzo manual.
+
+#### 🔹 Análisis de Sentimiento con IA Avanzada
+-   **¿Qué hace?** Utiliza un motor de Inteligencia Artificial de última generación, entrenado específicamente para el idioma español, que lee y comprende cada noticia para determinar si el tono es **Positivo, Negativo o Neutro**.
+-   **Su beneficio:** Entienda de un vistazo la reacción emocional del panorama mediático. Mida si la cobertura es favorable o desfavorable.
+
+#### 🔹 Resúmenes Ejecutivos Instantáneos
+-   **¿Qué hace?** Para cada artículo, el sistema genera un resumen conciso que extrae las ideas más importantes.
+-   **Su beneficio:** Ahorre horas de lectura. Obtenga la esencia de cada noticia en segundos.
+
+#### 🔹 Informes Visuales y de Datos
+-   **¿Qué hace?** Al finalizar el análisis, el sistema genera automáticamente dos informes en la carpeta `reports/`:
+    1.  **Un Gráfico de Sentimiento (archivo de imagen .png):** Un gráfico de barras claro y fácil de entender que muestra el porcentaje de noticias positivas, negativas y neutras.
+    2.  **Un Reporte Detallado (archivo .csv):** Una hoja de cálculo (compatible con Excel) con toda la información: título de la noticia, fuente, enlace, el sentimiento detectado y su resumen.
+-   **Su beneficio:** Obtenga artefactos listos para usar en sus presentaciones, informes internos o para realizar un análisis más profundo con otras herramientas.
+
+---
+
+## 3. ¿Cómo Funciona?
+
+El uso del sistema es simple. Se ejecuta con una palabra clave predefinida. La aplicación realiza todo el proceso de forma autónoma y, al finalizar, notifica que los informes han sido guardados en la carpeta `reports/`, listos para su consulta.
+
+---
+
+## 4. Evolución Futura
+
+Este sistema es una base sólida que puede evolucionar para incluir capacidades aún más potentes, como:
+-   Un **dashboard web interactivo** para explorar los datos en tiempo real.
+-   **Seguimiento de sentimiento a lo largo del tiempo** para ver cómo evoluciona la percepción.
+-   **Análisis comparativo** entre diferentes temas o competidores.
