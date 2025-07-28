@@ -1,7 +1,6 @@
 requests
 pandas
 nltk
-textblob
 matplotlib
 seaborn
 sumy
@@ -12,3 +11,5 @@ pdfkit
 jinja2
 newsapi-python
 python-dotenv
+torch
+transformers
